@@ -106,11 +106,17 @@ Table.isValid = function (x, y) {
 Table.canMove = function (pos, brick) {
     // cc.log(Table.table[20][1]);
     var tab = Table.table;
-    if (brick[0][0] == 1) {
-        var h = pos.h;
-        var w = pos.w;
+    var count=0;
+    for (let i = 0; i < brick.length; i++) {
+        for (let j = 0; j < brick[i].length; j++) {
+            count+=brick[i][j];
+        }        
+    }
+    if (count == 1) {
+        var h = pos.h+1;
+        var w = pos.w+1;
         var kt=false;
-        for (let i = 0; i <= pos.h; i++) {
+        for (let i = 0; i <= h; i++) {
             if (tab[i][w]==0) kt= true;
         }
         cc.log(kt);
